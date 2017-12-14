@@ -3,8 +3,10 @@
 This code is based on the Arduino bundled example
 01.Basics/AnalogReadSerial".
 
-These notes are written for use with recent Linux distributions.  In this
+These notes are written primarily for use with recent Linux distributions.  In this
 case, it is Ubuntu 16.04.  The kernel is based on Linux kernel v4.4.0.
+
+It has also been tested on macOS 10.13.x using `cat`.
 
 ## General Modifications
 
@@ -80,6 +82,7 @@ Once the console program is connected to the serial port, a steady stream of dec
 
 The port can be confirmed or set from the Arduino menubar by the "Tools"=>"Port".
 Examples here assume that the port is `/dev/ttyACM0`.
+On macOS 10.13.x, the port may show up as `/dev/usbmodem*`, where `*` is really a multi-digit number.
 
 Popular console programs include:
 
