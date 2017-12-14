@@ -1,6 +1,4 @@
-============================
-Addendum to AnalogReadSerial
-============================
+# Addendum to AnalogReadSerial
 
 This code is based on the Arduino bundled example
 01.Basics/AnalogReadSerial".
@@ -8,8 +6,7 @@ This code is based on the Arduino bundled example
 These notes are written for use with recent Linux distributions.  In this
 case, it is Ubuntu 16.04.  The kernel is based on Linux kernel v4.4.0.
 
-General Modifications
-=====================
+## General Modifications
 
 The original program specified a delay of 1 millisecond.  This does not
 mean the potentiometer was read 1000 times/second.  The serial console
@@ -30,8 +27,7 @@ The serial port has been sped up from 9600 to 57600 bits/sec, a factor
 of 6x.  This reduces the amount of time that the device is blocked
 on read.  At 57,600 bits/sec, this is roughly 0.5 to 0.8 milliseconds.
 
-Permissions
-===========
+## Permissions
 
 When the Arduino is plugged into USB and powered up, the device shows as
 "/dev/ttyACM0"; on some systems this may be "/dev/ttyUSB0".  When looking
@@ -55,8 +51,7 @@ likelihood of the user doing accidental damage to the system.)
 The right approach is to set the device to accept members of group
 "dialout", and add the user to the group.
 
-Set device group permissions
-----------------------------
+### Set device group permissions
 
     $ sudo chmod g+s /dev/ttyUSB0
     $ ls -l /dev/ttyUSB0
@@ -65,8 +60,7 @@ Set device group permissions
 Note the "S" after "rw" for the group.  The "sgid" (set-groupID) bit has
 been set for the device.
 
-Add user to "dialout" group
----------------------------
+### Add user to "dialout" group
 
 Check to see if who is already in the group.
 
@@ -78,8 +72,7 @@ successfully upload the compiled Arduino code and execute it.
 
 Otherwise use a tool such as "addgroup" to add the user to the group.
 
-Serial console program
-----------------------
+### Serial console program
 
 [MORE TO WRITE BELOW]
 
