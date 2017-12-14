@@ -60,7 +60,7 @@ The right approach is to set the device to accept members of group
 Note the "S" after "rw" for the group.  The "sgid" (set-groupID) bit has
 been set for the device.
 
-### Add user to "dialout" group
+### Add user to `dialout` group
 
 Check to see if who is already in the group.
 
@@ -70,24 +70,45 @@ Check to see if who is already in the group.
 The only user in the group is "someuserID"; that user should be able to
 successfully upload the compiled Arduino code and execute it.
 
-Otherwise use a tool such as "addgroup" to add the user to the group.
+Otherwise use a tool such as `addgroup` to add the user to the group.
 
 ### Serial console program
 
-[MORE TO WRITE BELOW]
+After the program is uploaded to the Arduino board,
+the USB port is free for use by a console program, or even the `cat` utility.
+Once the console program is connected to the serial port, a steady stream of decimal values should show up.
 
-stty 9600 or stty 57600
-stty -a
+The port can be confirmed or set from the Arduino menubar by the "Tools"=>"Port".
+Examples here assume that the port is `/dev/ttyACM0`.
 
-minicom, picocom, screen
-First find out how to exit.
+Popular console programs include:
 
-possibly 'cat'.
+  * `screen` - considered the most advanced of this list
+  * `minicom`- popular mainstay on Linux and UNIX systems
+  * `picocom` - smaller than `minicom`, but relatively easy to use
 
-[MORE TO WRITE ABOVE]
+#### Using `picocom`
 
-Now Play
-========
+To start the program at 57600,
+
+    picocom -b 57600 /dev/ttyACM0
+    
+The program can be terminated by <ctrl+A> followed by <ctrl+Q>,
+
+#### Using `cat`
+
+Note that no serial input is sent to the Arduino board.
+Serial output is received from the board.
+That is, data flows only one direction.
+In this case, `cat` can be used to print the data in a console window.
+
+Assuming the port is `/dev/ttyACM0`, it can be prepared for use by `cat` as follows:
+
+    stty < /dev/ttyACM0         # confirm current speed; may be 9600 bps
+    stty 57600 < /dev/ttyACM0   # set the speed to 57600 bps
+    cat < /dev/ttyACM0          # read from Arduino board
+
+## Now Play
 
 [MORE TO WRITE BELOW]
 
